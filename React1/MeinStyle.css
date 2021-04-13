@@ -3,30 +3,59 @@
     padding: 0;
     box-sizing: border-box;
 }
-/*
-display: flex;
-justify-content: center; // align horizontal 
-align-items: center; // align vertical 
-*/
+
 header{
+    top:0;
+    width:100%;
     background-color: cadetblue;
     display: flex; /* To make the header a flexbox */
     justify-content: space-between;
-    align-items: center;
+    align-content: center;
+    position: sticky;
 }
 header h1{
-    margin-left: 2vw;
-    font-size: max(3.3vw,1.5rem);
+    font-size: calc(1.5rem + 1.5vmax);
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: 0.5vw;
 }
 nav{
-    margin-right: 2.5vw;
     display:flex;
+    padding: auto;
 }
 nav ul{
-    font-size: max(1.8vw,1rem);
     list-style-type: none;
+    display:flex;
+}
+nav button{
+    cursor: pointer;
+    font-size: max(2.2vmax,1rem);
+    background-color: transparent;
+    border:none;
+    padding-left: 0.7vw;
+    padding-right: 0.5vw;
 }
 
+button:hover{
+    background-color: khaki;
+}
+li{
+    display: flex;
+    align-items: center;
+    font-size: max(1.8vmax,1rem);
+    padding: 0 0.5vw;
+}
+li:hover{
+    background-color: khaki;
+}
+li a{
+    text-decoration: none;
+    color: black;
+}
+
+
 body{
-    background-color:lawngreen;
+    background: url(images/escom1.jpg) no-repeat center center fixed;
+    background-size: cover;
+    color:wheat;
 }
