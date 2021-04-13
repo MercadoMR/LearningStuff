@@ -3,3 +3,30 @@
     padding: 0;
     box-sizing: border-box;
 }
+/*
+display: flex;
+justify-content: center; // align horizontal 
+align-items: center; // align vertical 
+*/
+header{
+    background-color: cadetblue;
+    display: flex; /* To make the header a flexbox */
+    justify-content: space-between;
+    align-items: center;
+}
+header h1{
+    margin-left: 2vw;
+    font-size: max(3.3vw,1.5rem);
+}
+nav{
+    margin-right: 2.5vw;
+    display:flex;
+}
+nav ul{
+    font-size: max(1.8vw,1rem);
+    list-style-type: none;
+}
+
+body{
+    background-color:lawngreen;
+}
