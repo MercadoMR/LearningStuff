@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>Some Web Page</title>
+    <link rel='stylesheet' href='styles.css'/>
+  </head>
+  <body>
+    <div class='menu-container'>
+      <div class='menu'>
+        <div class='date'>Aug 14, 2016</div>
+        <div class='signup'>Sign Up</div>
+        <div class='login'>Login</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+header{
+    width:100%;
+    background-color: cadetblue;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding:1vmin 2vmin; 
+}
+header > h1{
+    font-size: calc(1.5rem + 1.5vmax);
+}
+aside{
+    display:none;
+}
+
+nav{
+    display:flex;
+}
+nav ul{
+    list-style-type: none;
+    display:flex;
+}
+nav button{
+    cursor: pointer;
+    /* font-size: max(2.2vmax,1rem);*/
+    background-color: transparent;
+    border:none;
+    /*
+    padding-left: 0.7vw;
+    padding-right: 0.5vw;
+    */
+}
+
+#hamburger:focus ~ aside {
+    border: solid 10px black;
+}
+
+aside{
+    position:fixed;
+    display:flex;
+    flex-direction: column;
+}
+
+button:hover{
+    background-color: khaki;
+}
+
+li{
+    display: flex;
+    align-items: center;
+    /*
+    font-size: max(1.8vmax,1rem);
+    padding: 0 0.5vw;
+    */
+}
+li:hover{
+    background-color: khaki;
+}
+li a{
+    text-decoration: none;
+    color: black;
+}
+
+/*-- The Magic 
+#close-aside:checked ~ aside {
+    right: 0px;
+}
+#close-aside:checked + .menu-icon {
+    left: 210px;
+} 
+#close-aside:checked ~ header {
+    padding-right: 10vw;
+}
+
+https://jsfiddle.net/GZxUK/1/
+https://css-tricks.com/fun-viewport-units/
+https://itnext.io/how-to-create-a-responsive-navigation-bar-with-html-css-and-jquery-step-by-step-tutorial-9c780b58479f
+https://www.w3schools.com/cssref/css_selectors.asp
+https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block
+
+
+--*/
+
+body{
+    background: url(images/escom1.jpg) no-repeat center center fixed;
+    background-size: cover;
+    color:wheat;
+}

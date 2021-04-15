@@ -4,88 +4,70 @@
     box-sizing: border-box;
 }
 
-header{
-    top:0;
-    width:100%;
-    background-color: cadetblue;
-    display: flex; /* To make the header a flexbox */
-    justify-content: space-between;
-    align-content: center;
-    position: sticky;
-}
-header h1{
-    font-size: calc(1.5rem + 1.5vmax);
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    margin-left: 0.5vw;
-}
-nav{
-    display:flex;
-}
-nav ul{
-    list-style-type: none;
-    display:flex;
-}
-nav button{
-    cursor: pointer;
-    font-size: max(2.2vmax,1rem);
-    background-color: transparent;
-    border:none;
-    padding-left: 0.7vw;
-    padding-right: 0.5vw;
+html{
+    font-family: Georgia, serif;
 }
 
-#hamburger:focus ~ aside {
-    border: solid 10px black;
+header{
+    position: sticky;
+    top:0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: lightblue;
+}
+header > h1{
+    font-size: 2.5rem;
+}
+header > nav {
+    display: flex;
+}
+
+nav button{
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+nav button:hover{
+    background-color: cornsilk;
+}
+
+.list-header{
+    display:flex;
+    list-style-type: none;
+}
+.list-header li{
+    display:flex;
+    align-items: center;
+}
+li > a{
+    text-decoration: none;
+    color:black;    
+}
+.list-header li:hover{
+    background-color: olive;
+}
+
+#hamburger:focus{
+    background-color: chocolate;
+}
+#hamburger:focus + aside {
+    display: inherit;
 }
 
 aside{
-    position:fixed;
-    right:-2.2vmax;
-    display:flex;
-    flex-direction: column;
+    display:none;
 }
 
-button:hover{
-    background-color: khaki;
-}
-
-li{
+.nav-aside{
     display: flex;
-    align-items: center;
-    font-size: max(1.8vmax,1rem);
-    padding: 0 0.5vw;
-}
-li:hover{
-    background-color: khaki;
-}
-li a{
-    text-decoration: none;
-    color: black;
+    flex-direction: column;
+    justify-content: center;
+    position:fixed;
+    right:0;
+    height: 100%;
 }
 
-/*-- The Magic 
-#close-aside:checked ~ aside {
-    right: 0px;
-}
-#close-aside:checked + .menu-icon {
-    left: 210px;
-} 
-#close-aside:checked ~ header {
-    padding-right: 10vw;
-}
-
-https://jsfiddle.net/GZxUK/1/
-https://css-tricks.com/fun-viewport-units/
-https://itnext.io/how-to-create-a-responsive-navigation-bar-with-html-css-and-jquery-step-by-step-tutorial-9c780b58479f
-https://www.w3schools.com/cssref/css_selectors.asp
-
-
-
---*/
-
-body{
-    background: url(images/escom1.jpg) no-repeat center center fixed;
-    background-size: cover;
-    color:wheat;
-}
+/* https://markoskon.com/fixed-navbar-on-top-with-position-sticky/ */
