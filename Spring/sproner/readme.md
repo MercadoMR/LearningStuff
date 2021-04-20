@@ -8,9 +8,9 @@ In the next table are described the Methods, URLs and their corresponding action
 | _POST_ | **/api/song** | Create a new song |
 | _GET_ | **/api/song** | Retrieve all songs |
 | _DELETE_ | **/api/song** | Delete all songs |
-| _GET_ | **/api/song/<id>** | Retrieve a song by id |
-| _PUT_ | **/api/song/<id>** | Update a song by id |
-| _DELETE_ | **/api/film/<id>** | Delete a song by id |
+| _GET_ | **/api/song/id:** | Retrieve a song by id |
+| _PUT_ | **/api/song/id:** | Update a song by id |
+| _DELETE_ | **/api/song/id:** | Delete a song by id |
 
 ## Setting the database
 
@@ -32,14 +32,47 @@ ON DATABASE musiclibrary
 TO dba;
 ```
 
-As I said it's required to run the previous command on a superuser account. For example using: \
+As I said it's required to run the previous commands on a superuser account. For example using:
 ```
 psql -U postgres -W -d postgres -a -f structure.sql
 ```
-Then I'll create two schemas: \
+Then I'll create two schemas:
 ```
 /* Inside the musiclibrary database (psql -U dba -W -d musiclibrary) */
 CREATE SCHEMA music;
 CREATE SCHEMA users;
 SET search_path TO music, users , public;
 ```
+
+## Setting the configuration files
+In the project's pom.xml add:
+```
+<dependency>
+	<groupId>org.postgresql</groupId>
+	<artifactId>postgresql</artifactId>
+	<scope>runtime</scope>
+</dependency>
+<!-- For extra data types like Postgres's interval -->
+<dependency>
+    <groupId>com.vladmihalcea</groupId>
+    <artifactId>hibernate-types-52</artifactId>
+    <version>2.9.7</version>
+</dependency>
+```
+_Please check [this](https://www.baeldung.com/hibernate-types-library) 
+and [this](https://vladmihalcea.com/map-postgresql-interval-java-duration-hibernate/) for the last
+dependency._ \
+And verify that the dependencies
+````
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+Are there, if not add them.
+
