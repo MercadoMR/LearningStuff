@@ -11,6 +11,7 @@ In the next table are described the Methods, URLs and their corresponding action
 | _GET_ | **/api/song/id:** | Retrieve a song by id |
 | _PUT_ | **/api/song/id:** | Update a song by id |
 | _DELETE_ | **/api/song/id:** | Delete a song by id |
+| _GET_ | **/api/song?title=[keyword]** | Retrive a song containing **keyword** in its title |
 
 ## Setting the database
 
@@ -63,7 +64,7 @@ _Please check [this](https://www.baeldung.com/hibernate-types-library)
 and [this](https://vladmihalcea.com/map-postgresql-interval-java-duration-hibernate/) for the last
 dependency._ \
 And verify that the dependencies
-````
+```
 <dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -74,5 +75,7 @@ And verify that the dependencies
 	<artifactId>spring-boot-starter-web</artifactId>
 </dependency>
 ```
-Are there, if not add them.
+Are there, if not add them. \
+For Spring documentation see [_Queries_](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods) and [_Example_](https://bezkoder.com/spring-boot-postgresql-example/).
+
 
