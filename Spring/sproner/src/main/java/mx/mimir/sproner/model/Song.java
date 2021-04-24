@@ -1,6 +1,7 @@
 package mx.mimir.sproner.model;
 
-import java.time.Duration;
+
+import java.time.LocalTime;
 import java.time.YearMonth;
 
 import javax.persistence.Column;
@@ -11,17 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.vladmihalcea.hibernate.type.basic.YearMonthDateType;
-import com.vladmihalcea.hibernate.type.interval.PostgreSQLIntervalType;
 
 import org.hibernate.annotations.TypeDef;
-/* https://thorben-janssen.com/key-jpa-hibernate-annotations/ */
+/* https://thorben-janssen.com/key-jpa-hibernate-annotations/ 
+https://www.baeldung.com/hibernate-date-time
+https://www.baeldung.com/jpa-java-time
+
+*/
 
 @Entity
 @Table(name="song", schema="music")
-@TypeDef(
-    typeClass = PostgreSQLIntervalType.class,
-    defaultForType = Duration.class
-)
 @TypeDef(
     typeClass = YearMonthDateType.class,
     defaultForType = YearMonth.class
@@ -37,8 +37,8 @@ public class Song{
     @Column(name="description", columnDefinition="text")
     private String description;
 
-    @Column(name="duration", columnDefinition="interval")
-    private Duration duration;
+    @Column(name="duration", columnDefinition="time without time zone")
+    private LocalTime duration;
 
     @Column(name="published_on", columnDefinition = "date")
     private YearMonth publishedOn;
@@ -56,7 +56,7 @@ public class Song{
         this.description = description;
     }
 
-    public Song(String title, String description, Duration duration, YearMonth publishedOn) {
+    public Song(String title, String description, LocalTime duration, YearMonth publishedOn) {
         this.title = title;
         this.description = description;
         this.duration = duration;
@@ -87,11 +87,11 @@ public class Song{
         this.description = description;
     }
 
-    public Duration getDuration() {
+    public LocalTime getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration) {
+    public void setDuration(LocalTime duration) {
         this.duration = duration;
     }
 
@@ -108,8 +108,9 @@ public class Song{
     {
         return "["+id+"] - Song name:"+ title 
         +"\n Description:"+ description
-        +"\n Duration:"+ duration.toMinutes()
+        +"\n Duration:"+ duration.toString()
         +"\n Published on:"+ publishedOn.toString();
     }
+    
 
 }

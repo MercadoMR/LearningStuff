@@ -17,8 +17,16 @@ import mx.mimir.sproner.model.Song;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+/**
+ * 
+ *  mvn spring-boot:run
+    "%PSQL_ROOT%\bin\pg_ctl" -D "%PSQL_ROOT%\data" -l "%PSQL_ROOT%\log\run.log" start
+    "%PSQL_ROOT%\bin\psql" -U dba -W -d musiclibrary
+ */
+   
 
-@CrossOrigin(origins = "http://localhost:8081")
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class SpronerController {
@@ -55,13 +63,15 @@ public class SpronerController {
     @PostMapping(value="/song")
     public ResponseEntity<Song> createSong(@RequestBody Song song) {
         Song _song = null;
+        System.out.println("Los datos recibidos son:");
+        System.out.println(song);
+        //temporalValues.setLocalTime(LocalTime.parse("15:30:18"));
         try{
-            _song = sr.save(new Song(song.getTitle()));
+            _song = sr.save(song);
             return new ResponseEntity<Song>(_song,HttpStatus.CREATED); 
         }catch(Exception e){
             return new ResponseEntity<Song>(_song,HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        
     }
     
 
